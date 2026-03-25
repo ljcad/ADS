@@ -1,9 +1,9 @@
 model_list:
 
   # --- AIHubmix (OpenAI 兼容，一个 Key 使用多种模型) ---
-  - model_name: openai/qwen3-max-2026-01-23
+  - model_name: openai/qwen3.5-plus
     litellm_params:
-      model: openai/qwen3-max-2026-01-23
+      model: openai/qwen3.5-plus
       api_key: "os.environ/AIHUBMIX_KEY"
       api_base: https://aihubmix.com/v1
 

@@ -1,0 +1,32 @@
+model_list:
+
+  # --- AIHubmix (OpenAI 兼容，一个 Key 使用多种模型) ---
+  - model_name: qwen/qwen3-max-2026-01-23
+    litellm_params:
+      model: qwen/qwen3-max-2026-01-23
+      api_key: "os.environ/AIHUBMIX_KEY"
+      api_base: https://aihubmix.com/v1
+
+  - model_name: deepseek/deepseek-v3.2-think
+    litellm_params:
+      model: deepseek/deepseek-v3.2-think
+      api_key: "os.environ/AIHUBMIX_KEY"
+      api_base: https://aihubmix.com/v1
+
+
+  # --- Google Gemini (原生，多 Key 负载均衡) ---
+  - model_name: gemini/gemini-2.5-flash
+    litellm_params:
+      model: gemini/gemini-2.5-flash
+      api_key: "os.environ/GEMINI_API_KEY_1"
+
+
+# ===================================
+# Router 设置（可选）
+# ===================================
+router_settings:
+  routing_strategy: simple-shuffle    # simple-shuffle / least-busy / latency-based
+  num_retries: 2                      # 单个 deployment 失败后重试次数
+  # timeout: 30                       # 请求超时（秒）
+  # allowed_fails: 3                  # deployment 被冷却前允许的失败次数
+  # cooldown_time: 60                 # deployment 冷却时间（秒）
